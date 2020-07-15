@@ -8,7 +8,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb://localhost:27017/shopping-list',{useNewUrlParser: true, useUnifiedTopology: true}, () =>{
+mongoose.connect('mongodb+srv://ramanthdb:ramnath@cluster0-mhiwr.mongodb.net/shopping?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true}, () =>{
     console.log('db connected')
 })
 

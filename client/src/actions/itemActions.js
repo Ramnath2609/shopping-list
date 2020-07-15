@@ -30,7 +30,7 @@ export const addItem = (item) => {
 
 export const deleteItem = (id) => {
     return dispatch => {
-        axios.delete(`http://localhost:5000/api/items/${id}`)
+        axios.delete(`http://localhost:8432/api/items/${id}`)
             .then(response=>{
                 if(response.data.sucess){
                     dispatch({

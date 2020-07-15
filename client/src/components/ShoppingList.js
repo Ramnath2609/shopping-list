@@ -25,9 +25,9 @@ class ShoppingList extends Component{
                     <ListGroup>
                         <TransitionGroup className="shopping-list">
                             {items.map(item => {
-                                return <CSSTransition key={item.id} timeout={500} classNames="fade">
-                                    <ListGroupItem>
-                                        <Button color="danger" className="remove-btn" size="sm" onClick={() => {this.removeItem(item.id)}}>&times;</Button>
+                                return <CSSTransition key={item._id} timeout={500} classNames="fade">
+                                    <ListGroupItem key={item._id}>
+                                        <Button color="danger" className="remove-btn" size="sm" onClick={() => {this.removeItem(item._id)}}>&times;</Button>
                                         {item.name}
                                     </ListGroupItem>
                                 </CSSTransition>
@@ -50,7 +50,7 @@ ShoppingList.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.items
+        items: state.items.items
     }
 }
 

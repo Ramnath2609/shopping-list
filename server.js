@@ -1,9 +1,10 @@
 const express = require('express')
 const items = require('./routes/api/items')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const app = express()
-require('dotenv').config()
 
+app.use(cors())
 app.use(express.json())
 
 mongoose.connect('mongodb://localhost:27017/shopping-list',{useNewUrlParser: true, useUnifiedTopology: true}, () =>{

@@ -56,7 +56,7 @@ class ItemModal extends Component{
                             </FormGroup>
                             <Button 
                                 type="submit" 
-                                color="primary"
+                                color="dark"
                                 style={{marginTop: '15px'}} 
                                 block
                             >Add</Button>

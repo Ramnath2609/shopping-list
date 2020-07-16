@@ -4,7 +4,7 @@ import axios from 'axios'
 export const getItems =() => {
     return dispatch => {
         dispatch(setItemsLoading())
-        axios.get('http://localhost:5000/api/items')
+        axios.get('/api/items')
             .then(response => {
                 const items = response.data
                 dispatch({
@@ -17,7 +17,7 @@ export const getItems =() => {
 
 export const addItem = (item) => {
     return dispatch => {
-        axios.post('http://localhost:5000/api/items', item)
+        axios.post('/api/items', item)
             .then(response=>{
                 const item = response.data
                 dispatch({
@@ -30,7 +30,7 @@ export const addItem = (item) => {
 
 export const deleteItem = (id) => {
     return dispatch => {
-        axios.delete(`http://localhost:8432/api/items/${id}`)
+        axios.delete(`/api/items/${id}`)
             .then(response=>{
                 if(response.data.sucess){
                     dispatch({

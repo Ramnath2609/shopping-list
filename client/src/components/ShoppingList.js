@@ -27,7 +27,10 @@ class ShoppingList extends Component{
                             {items.map(item => {
                                 return <CSSTransition key={item._id} timeout={500} classNames="fade">
                                     <ListGroupItem key={item._id}>
-                                        <Button color="danger" className="remove-btn" size="sm" onClick={() => {this.removeItem(item._id)}}>&times;</Button>
+                                        { this.props.isAuthenticated ? (
+                                            <Button color="danger" className="remove-btn" size="sm" onClick={() => {this.removeItem(item._id)}}>&times;</Button>
+                                        ): ''}
+                                        
                                         {item.name}
                                     </ListGroupItem>
                                 </CSSTransition>
@@ -50,7 +53,8 @@ ShoppingList.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.items.items
+        items: state.items.items,
+        isAuthenticated: state.auth.isAuthenticated
     }
 }
 

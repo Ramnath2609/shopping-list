@@ -1,18 +1,24 @@
 const express = require('express')
 const items = require('./routes/api/items')
+const users = require('./routes/api/users')
+const auth = require('./routes/api/auth')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const config = require('config')
+const db = config.get('mongoURI')
 const path = require('path')
 const app = express()
 
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://ramanthdb:ramnath@cluster0-mhiwr.mongodb.net/shopping?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true}, () =>{
+mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true}, () =>{
     console.log('db connected')
 })
 
 app.use('/api/items', items)
+app.use('/api/users', users)
+app.use('/api/auth', auth)
 
 const port = process.env.PORT || 5000
 

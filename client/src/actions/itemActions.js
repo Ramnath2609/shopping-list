@@ -1,5 +1,6 @@
 import { ADD_ITEM, DELETE_ITEM, GET_ITEMS, ITEMS_LOADING } from '../actions/types'
 import axios from 'axios'
+import { tokenConfig } from './authActions'
 
 export const getItems =() => {
     return dispatch => {
@@ -16,8 +17,8 @@ export const getItems =() => {
 }
 
 export const addItem = (item) => {
-    return dispatch => {
-        axios.post('/api/items', item)
+    return (dispatch, getState) => {
+        axios.post('/api/items', item, tokenConfig(getState))
             .then(response=>{
                 const item = response.data
                 dispatch({
@@ -29,8 +30,8 @@ export const addItem = (item) => {
 }
 
 export const deleteItem = (id) => {
-    return dispatch => {
-        axios.delete(`/api/items/${id}`)
+    return (dispatch, getState) => {
+        axios.delete(`/api/items/${id}`,tokenConfig(getState))
             .then(response=>{
                 if(response.data.sucess){
                     dispatch({
